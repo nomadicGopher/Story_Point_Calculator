@@ -6,5 +6,5 @@
 
 ## How to use
 
-1. Double click the .html file so it opens in a web browser.
+1. Double click the .html file so that it opens in a web browser.
 2. For a given set of work, predict a level of complexity as well as time to spend completing. Everyone's interpretation of these measurements vary, so through consistent usage, an individual, or team's estimation patterns should emerge.
