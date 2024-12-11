@@ -4,8 +4,6 @@
 
 # Story Point Calculator
 
-Use this to estimate agile story points easier & consistently.
-
 ## How to use
 
 1. Double click the .html file so it opens in a web browser.
