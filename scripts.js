@@ -6,7 +6,7 @@ const form = document.forms[0],
   fibonacci = form.elements['fibonacci'];
 
 function calculate() {
-  const value = time.value * complexity.value;
+  const result = time.value * complexity.value;
 
   const displayResult = (result) => {
     document.getElementById("result").innerHTML = result;
@@ -16,17 +16,18 @@ function calculate() {
   if (fibonacci.checked) {
     const fibonacciNumbers = [1, 2, 3, 5, 8, 13, 21];
 
-    const roundToClosestFibonacci = (num) => {
+    const roundToClosestFibonacci = (localValue) => {
       return fibonacciNumbers.reduce((closest, current) => {
-        return (Math.abs(current - num) < Math.abs(closest - num)) ? current : closest;
+        // Determine if the current Fibonacci number is closer to the input number than the closest found so far
+        return (Math.abs(current - localValue) < (Math.abs(closest - localValue)) ? current : closest);
       }, fibonacciNumbers[0]);
     };
 
-    const roundedValue = roundToClosestFibonacci(value);
+    const roundedResult = roundToClosestFibonacci(result);
     
-    displayResult(roundedValue);
+    displayResult(roundedResult);
   } else {
-    displayResult(value);
+    displayResult(result);
   }
 }
 
