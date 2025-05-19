@@ -1,25 +1,37 @@
 "use strict";
 
-let form = document.forms[0],
+const form = document.forms[0],
   complexity = form.elements["complexity"],
   time = form.elements["time"],
-  value;
+  fibonacci = form.elements['fibonacci'];
 
 function calculate() {
-  value = time.value * complexity.value;
-  if (value !== 1) {
-    document.getElementById("plural").innerHTML = "s";
-  } else {
-    document.getElementById("plural").innerHTML = ""
+  const result = time.value * complexity.value;
+
+  const displayResult = (result) => {
+    document.getElementById("result").innerHTML = result;
+    document.getElementById("plural").innerHTML = (result !== 1 ? "s" : "");
   };
-  document.getElementById("value").innerHTML = value;
-};
 
-for (let i = 0; i < complexity.length; i++) {
-  complexity[i].addEventListener("change", calculate, false);
-};
-for (let i = 0; i < time.length; i++) {
-  time[i].addEventListener("change", calculate, false);
-};
+  if (fibonacci.checked) {
+    const fibonacciNumbers = [1, 2, 3, 5, 8, 13, 21];
 
-calculate();
+    const roundToClosestFibonacci = (localValue) => {
+      return fibonacciNumbers.reduce((closest, current) => {
+        // Determine if the current Fibonacci number is closer to the input number than the closest found so far
+        return (Math.abs(current - localValue) < (Math.abs(closest - localValue)) ? current : closest);
+      }, fibonacciNumbers[0]);
+    };
+
+    const roundedResult = roundToClosestFibonacci(result);
+    
+    displayResult(roundedResult);
+  } else {
+    displayResult(result);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  form.addEventListener("change", calculate, false);
+  calculate();
+});
