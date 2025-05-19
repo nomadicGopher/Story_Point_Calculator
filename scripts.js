@@ -12,7 +12,7 @@ function calculate() {
   } else {
     document.getElementById("plural").innerHTML = ""
   };
-  document.getElementById("value").innerHTML = value;
+  document.getElementById("result").innerHTML = value;
 };
 
 for (let i = 0; i < complexity.length; i++) {
