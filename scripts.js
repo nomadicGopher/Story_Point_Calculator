@@ -6,21 +6,31 @@ const form = document.forms[0],
   fibonacci = form.elements['fibonacci'];
 
 function calculate() {
-  let value = time.value * complexity.value;
+  const value = time.value * complexity.value;
 
-  if (fibonacci) {
-    (function() {
-      // Round value to the closes fibonacci value (ie. 1, 2, 4, 8, 16).
-    })();
+  const displayResult = (result) => {
+    document.getElementById("result").innerHTML = result;
+    document.getElementById("plural").innerHTML = (result !== 1 ? "s" : "");
+  };
+
+  if (fibonacci.checked) {
+    const fibonacciNumbers = [1, 2, 3, 5, 8, 13, 21];
+
+    const roundToClosestFibonacci = (num) => {
+      return fibonacciNumbers.reduce((closest, current) => {
+        return (Math.abs(current - num) < Math.abs(closest - num)) ? current : closest;
+      }, fibonacciNumbers[0]);
+    };
+
+    const roundedValue = roundToClosestFibonacci(value);
+    
+    displayResult(roundedValue);
+  } else {
+    displayResult(value);
   }
-
-  document.getElementById("plural").innerHTML = (value !== 1 ? "s" : "");
-
-  document.getElementById("result").innerHTML = value;
-};
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener("change", calculate, false);
-  
   calculate();
 });
