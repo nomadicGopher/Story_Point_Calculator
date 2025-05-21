@@ -3,11 +3,13 @@ body {
   color: #ffffff;
   text-align: center;
 }
+
 div.row {
   padding: 20px 0px;
   margin: auto;
   max-width: 60%;
 }
+
 a#resultLine {
   font-size: 22px;
   background-color: #007acc;
@@ -15,9 +17,7 @@ a#resultLine {
   border-radius: 10px;
   padding: 0 10px
 }
+
 form {
   width: 100vw;
-}
-button {
-  display: none;
 }
